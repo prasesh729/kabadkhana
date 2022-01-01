@@ -1,0 +1,96 @@
+
+
+{% extends "html/landing_page.html" %}
+
+{% block content %}
+
+        <!------------featured product------->
+    <div class="conatiner">
+        <div class="container">
+                <div class="row">
+                <div class="col-2">
+                <img src="/static/assets/{{ single_product.p_image}}" width="100%">
+                </div>
+                <div class="col-2">
+                <h1>{{ single_product.p_name}}</h1>
+                <h4>Rs {{ single_product.p_price}}</h4>
+                <h3>Amount to purchase:</h3>
+                <input type="number" value="1" min="0">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input hidden type="text" name ="product" value="{{ single_product.product_id}}">
+                    <a href="/purchase"><input  type="submit" class="btn"  value="Puchase"></a>
+                </form>
+                <h3>Product details <i class="fa fa-indent"></i></h3>
+                <br>
+                <p>{{ single_product.p_description}}</p>
+                </div>
+                </div>
+
+
+                <!-------title------->
+
+
+                <div class="row row-2">
+                    <h2>Related Products</h2>
+                    <p>View more</p>
+                </div>
+
+           <!-- <div class="small_container"---->
+
+                <div class="row">
+                    <div class="col-4">
+                        <img src="../../static/img2/p5.jpg">
+                        <h4>Recyclable Trashes</h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+
+                        </div>
+                        <P>Rs.2-5 per kg determines on seller</P>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../static/img2/p1.jpg">
+                        <h4>2nd hand vehicle part</h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+
+                        </div>
+                        <P>Rs.100-500 per kg determines on seller</P>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../static/img2/p2.jpg">
+                        <h4>2nd hand Home Appliances</h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+
+
+                        </div>
+                        <P>Rs.500-2000 determines on seller</P>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../static/img2/p3.jpg">
+                        <h4>Beverage Bottles</h4>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+
+                        </div>
+                        <P>Rs.4-7 per kg determines on seller</P>
+                    </div>
+
+                </div>
+            </div>
+     </div>
+</div>
+{% endblock %}
