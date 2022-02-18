@@ -22,7 +22,7 @@ from landingpage.views import loginpage
 
 from landingpage.views import mainpage
 from landingpage.views import aboutpage
-from landingpage.views import shoppingpage
+
 from landingpage.views import customer_register
 from landingpage.views import profilet
 from landingpage.views import logout_customer
@@ -40,12 +40,12 @@ urlpatterns = [
     path('', mainpage),
     path('aboutus/',aboutpage),
     path('admin/',include("admin_app.urls")),
-    path('shopping_cart/',shoppingpage),
     path('profile/<int:profile_id>',profilet),
     path('c_logout/',logout_customer),
     path('add_product/',views.user_add_product),
     path('user_delete/<int:product_id>',views.user_product_delete),
     path('user_product/<int:user_id>',views.user_product),
     path('purchase/',views.purchasepage),
+    path('product_edit/<int:p_edit_id>',views.product_edit),
 
 ]
