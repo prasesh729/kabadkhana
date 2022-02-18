@@ -34,6 +34,7 @@ def loginpage(request):
     else:
         return render(request, "html/Loginfrom.html", {})
 
+
 def customer_register(request):
     if (request.method == 'POST'):
         uname = request.POST['uname']
@@ -68,11 +69,25 @@ class Product_p(View):
         return redirect('/')
 
     def get(self,request,id):
+
         single_product = get_object_or_404(Products, pk=id)
+
+
+        single_product = get_object_or_404(Products, pk=id)
+
+
         data = {
             'single_product': single_product,
         }
         return render(request, "html/product_details.html", data)
+
+
+
+
+
+@login_required(login_url='/login')
+def shoppingpage(request,*args,**kwargs):
+    return render(request, "html/shopping_cart.html", {})
 
 
 def aboutpage(request,*args,**kwargs):
@@ -95,11 +110,17 @@ def profilet(request,profile_id):
         print(form)
         form.save()
 
+
+
+
+
     return render(request, "html/profile.html", {'customers':customer})
 
 def logout_customer(request):
     logout(request)
     return redirect('http://127.0.0.1:8001/')
+
+
 
 @login_required(login_url='/login')
 def user_add_product(request,*args,**kwargs):
@@ -115,11 +136,14 @@ def user_product(request,user_id):
     products = Products.objects.filter(user_id_id=user_id)
     return render(request, "html/user_product.html", {'product':products})
 
+
 @login_required(login_url='/login')
+
 def user_product_delete(request,product_id):
     product =Products.objects.get(product_id=product_id)
     product.delete()
     return redirect('/')
+
 
 def purchasepage(request):
     return render(request, "html/purchase.html")
@@ -138,3 +162,8 @@ def product_edit(request,p_edit_id):
         print(form)
         form.save()
     return render(request, "html/edit_product.html",{'pr':products})
+
+
+def purchasepage(request,):
+    return render(request, "html/purchase.html", {})
+
